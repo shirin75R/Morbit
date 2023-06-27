@@ -9,6 +9,7 @@ import androidx.navigation.navArgument
 import com.trade.morbit.ui.screens.HomeScreen
 import com.trade.morbit.ui.screens.WebPageScreen
 
+
 @Composable
 fun SetupNavGraph(navController: NavHostController) {
     NavHost(
@@ -19,6 +20,7 @@ fun SetupNavGraph(navController: NavHostController) {
 
         composable(route = Screen.Home.rout) {
             HomeScreen(navController = navController)
+
         }
         composable(
             route = Screen.WebView.rout + "?url={url}",
@@ -28,6 +30,7 @@ fun SetupNavGraph(navController: NavHostController) {
                 nullable = true
             })
         ){
+
             val url = it.arguments?.getString("url")
             url?.let {
                 WebPageScreen(navController = navController, url = url)

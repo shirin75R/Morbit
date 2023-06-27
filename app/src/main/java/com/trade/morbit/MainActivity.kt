@@ -16,9 +16,13 @@ import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import com.trade.morbit.navigation.Screen
 import com.trade.morbit.navigation.SetupNavGraph
 import com.trade.morbit.ui.screens.HomeScreen
+import com.trade.morbit.ui.screens.WebPageScreen
 import com.trade.morbit.ui.theme.MorbitTheme
+import com.trade.morbit.util.Constants
+import com.trade.morbit.util.Constants.GOOGLE_URL
 
 class MainActivity : ComponentActivity() {
     private lateinit var navController: NavHostController
@@ -31,9 +35,9 @@ class MainActivity : ComponentActivity() {
             MorbitTheme {
                     navController = rememberNavController()
 
-                    // A surface container using the 'background' color from the theme
                     Scaffold() {
-                        SetupNavGraph(navController = navController)
+                        // SetupNavGraph(navController = navController)
+                        WebPageScreen(navController, GOOGLE_URL)
                     }
 
             }
@@ -41,18 +45,4 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
 
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    MorbitTheme {
-        Greeting("Android")
-    }
-}
